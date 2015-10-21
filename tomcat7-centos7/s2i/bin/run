@@ -1,0 +1,4 @@
+#!/bin/bash
+
+echo "---> starting application ..."
+exec /opt/app-root/src/tomcat/bin/catalina.sh run

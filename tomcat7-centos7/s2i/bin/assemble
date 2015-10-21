@@ -1,0 +1,15 @@
+#!/bin/bash
+
+set -e
+
+echo "---> Copying application source ..."
+cp -Rf /tmp/src/. ./
+chgrp -R 0 ./
+chmod -R g+rwx ./
+
+if [[ -f pom.xml ]]; then
+  echo "Build application ..."
+  mvn compile && mvn package
+fi
+
+cp /opt/app-root/src/target/*.war /opt/app-root/src/tomcat/webapps
